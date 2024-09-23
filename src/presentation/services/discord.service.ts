@@ -7,7 +7,7 @@ export class DiscordService {
 
   constructor() {}
 
-  async notify(message: string) {
+  async notify(message: string): Promise<boolean> {
 
     const body = {
       content: message,

@@ -11,12 +11,12 @@ export class GitHubService {
 
     let message: string = '';
 
-    const { action, sender, repository, starred_at} = payload;
+    const { sender, repository, starred_at} = payload;
 
     if (starred_at){
-      message = `User ${ sender.login } ha dejado una estrella a ${repository.full_name} on ${starred_at}`
+      message = `Usuario: ${ sender.login } ha dejado una estrella al repositorio: ${repository.name} el ${starred_at}`
     } else {
-      message = `User ${ sender.login } ha quitado una estrella a ${repository.full_name} on ${starred_at}`
+      message = `Usuario: ${ sender.login } ha quitado una estrella al repositorio: ${repository.name}`
     }
 
     return message;
@@ -28,7 +28,7 @@ export class GitHubService {
 
     const { action, issue } = payload;
 
-    message = `User ${ issue.user.login } ha desencadenado ${ issue.title } --> ${ action }`
+    message = `Usuario: ${ issue.user.login } ha desencadenado ${ action } en issue ${ issue.title }`
 
     return message;
   }
